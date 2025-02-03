@@ -9,7 +9,7 @@ type Props = {
 };
 
 function ContactUs({ setSelectedPage }: Props) {
-  const inputStyles = `w-full rounded-lg bg-primary-300 px-5 py-3 placeholder-white`;
+  const inputStyles = `mb-5 w-full rounded-lg bg-primary-300 px-5 py-3 placeholder-white`;
   const {
     register,
     trigger,
@@ -60,8 +60,8 @@ function ContactUs({ setSelectedPage }: Props) {
             viewport={{ once: true, amount: 0.5 }}
             transition={{ duration: 0.5 }}
             variants={{
-              hidden: { opacity: 0, x: 50 },
-              visible: { opacity: 1, x: 0 },
+              hidden: { opacity: 0, y: 50 },
+              visible: { opacity: 1, y: 0 },
             }}
           >
             <form
@@ -104,9 +104,10 @@ function ContactUs({ setSelectedPage }: Props) {
                 </p>
               )}
 
-              <input
+              <textarea
                 className={inputStyles}
-                type="text"
+                rows={4}
+                cols={50}
                 placeholder="MESSAGE"
                 {...register("message", {
                   required: true,
@@ -121,7 +122,34 @@ function ContactUs({ setSelectedPage }: Props) {
                     "Max length is 2000 characters."}
                 </p>
               )}
+
+              <button
+                type="submit"
+                className="mt-5 rounded-lg bg-secondary-500 px-20 py-3 transition duration-500 hover:text-white"
+              >
+                SUBMIT
+              </button>
             </form>
+          </motion.div>
+
+          <motion.div
+            className="relative mt-16 basis-2/5 md:mt-0"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.5 }}
+            transition={{ delay: 0.2, duration: 0.5 }}
+            variants={{
+              hidden: { opacity: 0, x: 50 },
+              visible: { opacity: 1, x: 0 },
+            }}
+          >
+            <div className="relative w-full before:absolute before:-bottom-20 before:-right-10 before:z-0 md:before:content-evolvetext">
+              <img
+                className="relative z-10 w-full"
+                src={ContactUsPageGraphic}
+                alt="Contact us page graphic"
+              />
+            </div>
           </motion.div>
         </div>
       </motion.div>
